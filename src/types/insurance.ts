@@ -1,0 +1,1 @@
+export type InsurancePlanType = 'health' | 'dental' | 'vision';
