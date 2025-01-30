@@ -3,7 +3,10 @@ import { FC } from 'react';
 const SubscriptionPage: FC = () => {
   return (
     <div className="container mx-auto px-4 py-8">
-      <h1 className="text-3xl font-bold text-center mb-12">Choose Your Plan</h1>
+      <h1 className="text-3xl font-bold text-center mb-4">Choose Your Plan</h1>
+      <p className="text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+        Select the perfect plan for your needs. Upgrade or downgrade at any time. All plans include our core features with additional capabilities as you grow.
+      </p>
       
       <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {/* Free Tier */}
