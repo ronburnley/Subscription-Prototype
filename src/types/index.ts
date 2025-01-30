@@ -1,5 +1,13 @@
 import { InsurancePlanType } from './insurance';
 
+export interface InsurancePlan {
+  type: InsurancePlanType;
+  name: string;
+  coveredIndividuals: string[];
+  premium: number;
+  subsidy: number;
+}
+
 export interface User {
   email: string;
   firstName: string;
@@ -27,14 +35,6 @@ export interface FamilyMember {
   firstName: string;
   lastName: string;
   relationship: 'Spouse' | 'Child' | 'Step-Child';
-}
-
-export interface InsurancePlan {
-  type: InsurancePlanType;
-  name: string;
-  coveredIndividuals: string[];
-  premium: number;
-  subsidy: number;
 }
 
 export interface CommunicationPreferences {
