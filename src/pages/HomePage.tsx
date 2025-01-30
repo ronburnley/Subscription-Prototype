@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { ArrowRight, MapPin, Mail } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export function HomePage() {
+  const navigate = useNavigate();
   const [zipCode, setZipCode] = useState('');
   const [email, setEmail] = useState('');
 
@@ -12,102 +14,69 @@ export function HomePage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] bg-white flex flex-col">
-      {/* Progress Steps */}
-      <div className="border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center py-4 text-sm">
-            <span className="font-medium text-gray-900">Location</span>
-            <ArrowRight className="h-4 w-4 mx-2 text-gray-400" />
-            <span className="text-gray-400">Coverage</span>
-            <ArrowRight className="h-4 w-4 mx-2 text-gray-400" />
-            <span className="text-gray-400">Savings</span>
-            <ArrowRight className="h-4 w-4 mx-2 text-gray-400" />
-            <span className="text-gray-400">Personalize</span>
-          </div>
-        </div>
+    <div className="relative overflow-hidden">
+      {/* Abstract Background Elements */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden -z-10">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob"></div>
+        <div className="absolute top-40 -left-20 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-8 left-40 w-96 h-96 bg-pink-500 rounded-full mix-blend-multiply filter blur-xl opacity-20 animate-blob animation-delay-4000"></div>
       </div>
 
-      {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl w-full">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl font-bold text-gray-900 mb-4">
-              Find affordable health coverage
+      {/* Hero Section */}
+      <div className="relative pt-20 pb-32 px-4">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-7xl font-bold mb-8 bg-clip-text text-transparent bg-gradient-to-r from-blue-500 to-purple-600">
+              Transform Your Workflow
             </h1>
-            <p className="text-lg text-gray-600">
-              We'll help find the right plan for you using our free comparison tool.
+            <p className="text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12">
+              Streamline your process, boost productivity, and achieve more with our intuitive platform. The future of work is here.
             </p>
+            <div className="flex gap-4 justify-center">
+              <button 
+                onClick={() => navigate('/subscription')}
+                className="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors text-lg font-semibold"
+              >
+                Get Started
+              </button>
+              <button className="bg-white text-blue-500 px-8 py-3 rounded-lg hover:bg-gray-50 transition-colors text-lg font-semibold border-2 border-blue-500">
+                Learn More
+              </button>
+            </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <MapPin className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  id="zipCode"
-                  name="zipCode"
-                  value={zipCode}
-                  onChange={(e) => setZipCode(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-lg"
-                  placeholder="Enter ZIP code"
-                  maxLength={5}
-                  required
-                />
-                <label
-                  htmlFor="zipCode"
-                  className="absolute -top-2.5 left-2 inline-block bg-white px-1 text-sm font-medium text-gray-600"
-                >
-                  ZIP Code
-                </label>
+          {/* Features Grid */}
+          <div className="grid md:grid-cols-3 gap-8 px-4">
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl">
+              <div className="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
               </div>
-              <p className="mt-2 text-sm text-gray-500 ml-2">
-                Your residence ZIP code determines the plans available to you
-              </p>
+              <h3 className="text-xl font-bold mb-2">Lightning Fast</h3>
+              <p className="text-gray-600">Experience unprecedented speed and efficiency in your daily operations.</p>
             </div>
 
-            <div>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Mail className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="block w-full pl-10 pr-3 py-3.5 border border-gray-300 rounded-md shadow-sm focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 text-lg"
-                  placeholder="Enter email address"
-                />
-                <label
-                  htmlFor="email"
-                  className="absolute -top-2.5 left-2 inline-block bg-white px-1 text-sm font-medium text-gray-600"
-                >
-                  Email <span className="text-gray-400">(optional)</span>
-                </label>
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl">
+              <div className="w-12 h-12 bg-purple-500/10 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                </svg>
               </div>
+              <h3 className="text-xl font-bold mb-2">Secure by Design</h3>
+              <p className="text-gray-600">Bank-grade security ensuring your data is protected at all times.</p>
             </div>
 
-            <div>
-              <p className="text-sm text-gray-500">
-                Your information is safe - check out our{' '}
-                <a href="#" className="text-indigo-600 hover:text-indigo-500">
-                  Privacy Policy
-                </a>
-              </p>
+            <div className="bg-white/80 backdrop-blur-sm p-6 rounded-xl">
+              <div className="w-12 h-12 bg-pink-500/10 rounded-lg flex items-center justify-center mb-4">
+                <svg className="w-6 h-6 text-pink-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold mb-2">Fully Customizable</h3>
+              <p className="text-gray-600">Adapt the platform to your needs with powerful customization options.</p>
             </div>
-
-            <button
-              type="submit"
-              className="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-lg font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Find Coverage
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
